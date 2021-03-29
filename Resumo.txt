@@ -1,0 +1,92 @@
+SGBD --- Sistema de gerenciamento de banco de dados
+
+### Modelagem Basica ###
+
+ENTIDADE = TABELA
+CAMPOS = ATRIBUTOS
+
+Cliente 
+
+NOME  - CARACTER(30)
+CPF   - NUMERICO(11)
+EMAIL - CARACTER(30)
+TELEFONE - CARACTER(30)
+ENDEREÇO - CARACTER(100)
+SEXO - CARACTER (1)
+
+______________________________________________________________________________________________________________________
+
+### Processos de Modelagem ###
+
+--->Fase 01 e Fase 02 - AD ADM de Dados
+
+Modelagem Conceitual - Rascunho
+Modelagem Logica - Qualquer Progema de Modelagem
+
+--->Fase 03 - DBA / AD
+
+Modelagem Fisica - E TRANSFORMAR O ESQUEMA PARA LINGUGEM DE PROGRMAÇÃO DO BANCO FEITA POR SCRIPTS
+NELA QUE CRIAMOS O BD E AS TABELAS QUE ESTARA NELE.
+
+______________________________________________________________________________________________________________________
+
+TIPOS DE VARIAVEIS 
+
+CARACTERES LITERAIS - CHAR E VARCHAR, ONDE CHAR TEM TAMANHO FIXO ENQUANDO O VARCHAR E VARIA DE ACORDO COM OS CAMPOS PREENCHIDOS, POREM O CHAR É MAIS RAPIDO
+NUMEROS - INT E FLOAT, 
+FOTOS E DOCUMENTOS - BLOB,
+TEXTOS - TEXT,
+ENUM - SOMENTE NO MYSQL, CONJUNTO DEFINITO 
+
+______________________________________________________________________________________________________________________
+
+### FORMA DE INSERIR DADOS NA TABELA DO BANCO ###
+
+SINTAXE BASICA -- INSET INTO <TABELA>
+
+---->FORMA 01 - OMITINDO COLUNAS 
+
+INSERT INTO CLIENTE VALUES('58748895',885755896,'M',NULL,'JORGE','OSCAR CURY - BOM RETIRO - PATOS DE MINAS - MG');
+
+
+----->FORMA 02 - COLOCANDO AS COLUNAS
+
+INSERT INTO CLIENTE(NOME,SEXO,ENDERECO,TELEFONE,CPF) VALUES('LILIAN','F','SENADOR SOARES - TIJUCA - RIO DE JANEIRO - RJ','947785696',887774856);
+
+
+---->FORMA 03 - INSERT COMPACTO - SOMENTE MYSQL
+
+    ('ANA','F','ANA@GLOBO.COM',85548962,'548556985','PRES ANTONIO CARLOS - CENTRO - SAO PAULO - SP'),
+                          ('CARLA','F','CARLA@TERATI.COM.BR',7745828,'66587458','SAMUEL SILVA - CENTRO - BELO HORIZONTE - MG');
+
+______________________________________________________________________________________________________________________
+
+* SELEÇÃO, PROJEÇÃO E JUNÇÃO
+
+COMANDO SELECT 
+
+        SELECT NOW();
+
+        SELECT 'FELIPE MAFRA';
+
+        SELECT 'BANCO DE DADOS';
+
+
+ALIAS DE COLUNAS
+
+PROJEÇÃO ---> SELECT
+SELEÇÃO  ---> WHERE
+
+
+
+SELECT NOME, SEXO, EMAIL FROM CLIENTE
+
+SELECT NOME AS CLIENTE, SEXO, EMAIL FROM CLIENTE
+
+
+SELECT ---> SELECIONA AS COLUNAS 
+WHERE  ---> FILTRA AS LINHAS NESSAS COLUNAS 
+
+LIKE   ---> COMO, ELE SUBITITUI O = 
+%      ---> QUALQUER COISA - USADO ANTES OU DEPOIS OU AMBOS PARA DIZER QUE TEM ALGO ANTES OU DEPOIS
+
