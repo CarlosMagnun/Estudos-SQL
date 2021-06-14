@@ -9,6 +9,7 @@ CREATE TABLE <NOME DA TABELA> (
        ### CAMPOS DA TABELA ###
 
 );
+SHOW DATABASES; -- MOSTRA TODAS OS BANCSO DE DADOS
 
 SHOW TABLES; -- MOSTRA AS TABELAS CRIADAS NO BANCO
 
@@ -23,5 +24,174 @@ WHERE <ELEMENTO> = '<OQUE TEM Q TER COMO FILTRO>'
 $$$ FILTRA O ELEMENTO QUE CONTEM O TERMO DENTRO DE UMA FRASE
 SELECT <NOME DA COLUNA> AS <SE VC QUISER INDENTIFICAR A COLUNA> FROM <DA TABELA QUE VC QUISER>
 WHERE <ELEMENTO> LIKE '<%OQUE TEM Q TER COMO FILTRO%>'
+
+OPERADORES LÓGICOS 
+OR -> PARA QUE A SAIDA DA QUERY SEJA VERDADEIRA, BASTA QUE APENAS UMA CONDICAO SEJA VERDADEIRA.
+AND -> PARA QUE A SAIDA SEJA VERDADEIRA TODAS AS CONDICOES PRECISAM SER VERDADEIRAS.
+
+
+----------------------------------------------------------------------------------------------------------------
+
+COUNT(*), GROUP BY
+
+SELECT COUNT(*) AS "Quantidade de Registros da Tab. Cliente"
+ FROM CLIENTE;
+
+
+SELECT SEXO, COUNT(*)
+FROM CLIENTE;
+
+SELECT * FROM CLIENTE;
+
+SELECT SEXO, COUNT(*) 
+FROM CLIENTE
+GROUP BY SEXO;
+
+--------------------------------------------------------------------------------------------------------------------
+
+SELECT NOME, SEXO, ENDERECO FROM CLIENTE
+WHERE sexo = 'F';
+
+SELECT NOME, SEXO, ENDERECO FROM CLIENTE
+WHERE EMAIL = NULL;
+
+SELECT NOME, SEXO, ENDERECO, EMAIL FROM CLIENTE
+WHERE EMAIL IS NULL;
+
+SELECT NOME, SEXO, ENDERECO FROM CLIENTE
+WHERE EMAIL IS NOT NULL;
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+SELECT NOME, EMAIL
+FROM CLIENTE;
+
+UPDATE CLIENTE
+SET EMAIL = 'LILIAN@HOTMAIL.COM';
+
+SELECT NOME, EMAIL
+FROM CLIENTE;
+
+/* WHERE - VAI SER O SEU MELHOR AMIGO DA VIDA
+PRA VIDA INTEIRA */
+
+
+SELECT * FROM CLIENTE
+WHERE NOME = 'LILIAN';
+
+UPDATE CLIENTE
+SET EMAIL = 'JOAOA@IG.COM.BR'
+WHERE NOME = 'JOAO';
+
+SELECT NOME, EMAIL
+FROM CLIENTE;
+
+UPDATE CLIENTE
+SET EMAIL = 'JORGE@IG.COM.BR'
+WHERE NOME = 'JORGE';
+
+SELECT NOME, EMAIL
+FROM CLIENTE;
+
+----------------------------------------------------------------------------------
+DELETE FROM CLIENTE
+WHERE NOME = 'CARLA'
+OR EMAIL = 'LILIAN@HOTMAIL.COM';
+
+SELECT * FROM CLIENTE
+WHERE NOME = 'CARLA'
+OR EMAIL = 'LILIAN@HOTMAIL.COM';
+
+SELECT * FROM CLIENTE -- OR TRAZ TODO MUNDO COM PELO MENOS UMA DAS DUAS CONDICOES
+WHERE NOME = 'CARLA'
+AND EMAIL = 'LILIAN@HOTMAIL.COM';
+
+DELETE FROM CLIENTE -- TRAZ APENAS O REGISTRO QUE SATISFACA AS DUAS CONDICOES
+WHERE NOME = 'CARLA'
+AND EMAIL = 'LILIAN@HOTMAIL.COM';
+
+-----------------------------------------------------------------------------------------------------
+DROP TABLE ---- APAGA A TABELA
+
+
+
+------------------------------------------------------------------------------------------------------
+
+VIEW
+
+CREATE VIEW - AUTOMATIZA UM QUERY 
+
+DROP VIEW RELATORIO; --- APAGA VIEW
+
+-----------------------------------------------------------------------------------------------------
+
+ORDER BY
+
+DESC 
+ASC 
+
+-----------------------------------------------------------------------------------------------------
+DELIMITER
+
+DELIMITER $
+
+-----------------------------------------------------------------------------------------------------
+
+STORED PROCEDURES
+
+DELIMITER $
+
+CREATE PROCEDURES NOME
+
+DROP PORCEDURE <NOME>(); DELETA UMA PROCEDURE
+
+----------------------------------------------------------------------------------------------------------
+
+--ADICIONANDO UMA PK
+ALTER TABLE TABELA 
+ADD PRIMARY KEY (COLUNA1);
+
+--ADICIONANDO COLUNA SEM POSICAO. ULTIMA POSICAO
+ALTER TABLE TABELA 
+ADD COLUNA varchar(30);
+
+ALTER TABLE TABELA 
+ADD COLUNA100 INT;
+
+--ADICIONANDO UMA COLUNA COM POSICAO
+ALTER TABLE TABELA 
+ADD COLUMN COLUNA4 VARCHAR(30) NOT NULL UNIQUE
+AFTER COLUNA3;
+
+--MODIFICANDO O TIPO DE UM CAMPO
+ALTER TABLE TABELA
+ MODIFY COLUNA2 DATE NOT NULL;
+
+--RENOMEANDO O NOME DA TABELA
+ALTER TABLE TABELA 
+RENAME PESSOA;
+
+CREATE TABLE TIME(
+	IDTIME INT PRIMARY KEY AUTO_INCREMENT,
+	TIME VARCHAR(30),
+	ID_PESSOA VARCHAR(30)
+);
+
+--Foreign key
+ALTER TABLE TIME 
+ADD FOREIGN KEY(ID_PESSOA)
+REFERENCES PESSOA(COLUNA1);
+
+/* VERIFICAR AS CHAVES */
+SHOW CREATE TABLE TIME;
+
+
+-----------------------------------------------------------------------------------------------------------
+TRIGGERS
+
+
+
+
 
 
